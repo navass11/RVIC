@@ -324,9 +324,11 @@ def subset(outlets, subset_length=None):
         else:
             before = np.append(before, outlet.unit_hydrograph,
                                axis=1)
-
+        
         outlet.offset = np.empty(outlet.unit_hydrograph.shape[1],
                                  dtype=np.int32)
+        print('Salva')
+        print(outlet.unit_hydrograph.shape[1])
         out_uh = np.zeros((subset_length, outlet.unit_hydrograph.shape[1]),
                           dtype=np.float64)
 
@@ -367,7 +369,7 @@ def subset(outlets, subset_length=None):
 
             # clip and normalize
             tot = outlet.unit_hydrograph[left:right, j].sum()
-            out_uh[:, j] = outlet.unit_hydrograph[left:right, j] / tot
+            out_uh[:, j] = outlet.unit_hydrograph[left:right, j].values.flatten() / tot
 
         outlet.unit_hydrograph = out_uh
 

@@ -49,7 +49,7 @@ def latlon2yx(plats, plons, glats, glons):
     print('Salvaa')
     print(glons.shape)
     print(indexes)
-    y, x = np.unravel_index(np.array(indexes)-1, glons.shape)
+    y, x = np.unravel_index(indexes, glons.shape)
     return y, x
 
 # -------------------------------------------------------------------- #
